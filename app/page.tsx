@@ -4,6 +4,8 @@ import { CssBaseline, ThemeProvider } from '@mui/material'
 import { ColorModeContext, useMode } from '../themes/theme'
 import TopBar from '@/components/topbar'
 import SideBar from '@/components/sidebar';
+import DashboardComponent from '@/components/dashboard';
+
 
 export default function Home() {
   const { theme, colorMode } = useMode();
@@ -15,7 +17,9 @@ export default function Home() {
         <TopBar />
         <SideBar />
 
-        <main>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat tempore nesciunt labore illo quasi facilis omnis, dignissimos consequatur quibusdam velit quidem, aperiam nemo ullam, culpa praesentium necessitatibus eius et voluptatibus.</main>
+        <main>
+          <DashboardComponent />
+        </main>
 
       </ThemeProvider>
     </ColorModeContext.Provider>
