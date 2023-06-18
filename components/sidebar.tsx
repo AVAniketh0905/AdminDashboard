@@ -4,10 +4,10 @@ import { Mail } from '@mui/icons-material';
 import { tokens, ColorModeContext } from '@/themes/theme';
 
 const ListItemCompoent = ({ key, text, sx }: { key: number; text: string; sx: any }) => {
-    return <IconButton className='text-center'>
+    return <IconButton className='text-center' sx={{ borderRadius: 15 }}>
         <ListItem key={key}>
             <ListItemIcon>
-                <Mail sx={{ color: sx.color[300] }} />
+                <Mail sx={{ color: sx.color[500] }} />
             </ListItemIcon>
             <ListItemText sx={{ color: sx.color[500] }}>{text}</ListItemText>
         </ListItem>
@@ -51,20 +51,22 @@ export default function SideBar() {
                 anchor="left"
                 open={open}
                 onClose={() => setOpen(false)}
-                className={`flex-shrink-0 ${open ? 'w-24' : 'w-16'}`}
-                classes={{
-                    paper: `w-36 ${open ? 'md:w-64' : 'md:w-16'}`,
-                }}
             >
-                <List className='flex-col' sx={{
-                    backgroundColor: colors.greyAccent[600],
+                <ListItem className='flex flex-col p-5 border-r-4 justify-evenly h-screen' sx={{
+                    background: theme.palette.mode == 'light' ? colors.whiteAccent[500] : colors.greyAccent[500],
+                    borderRightColor: colors.yellowAccent[400],
                 }}>
                     {
                         pages.map((text, index) => (
-                            <ListItemCompoent sx={{ color: colors.yellowAccent }} key={index} text={text} />
+                            theme.palette.mode == 'light'
+                                ?
+                                <ListItemCompoent sx={{ color: colors.orangeAccent }} key={index} text={text} />
+                                : 
+                                <ListItemCompoent sx={{ color: colors.yellowAccent }} key={index} text={text} />
+
                         ))
                     }
-                </List>
+                </ListItem>
             </Drawer>
         </Box>
     );

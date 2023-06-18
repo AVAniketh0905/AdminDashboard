@@ -15,38 +15,56 @@ export default function TopBar() {
     const colors = tokens(theme.palette.mode);
     const colorMode = useContext(ColorModeContext);
 
-    return (
-        <Box component="div" display="flex" justifyContent="space-between" m={3}>
+    const handleToggle = (modePressed: string) => {
+        if (modePressed != theme.palette.mode) {
+            colorMode.toggleColorMode();
+        }
+    }
 
+    return (
+        <Box
+            component="div"
+            display="flex"
+            justifyContent="space-between"
+            mt={3}
+            pb={2}
+            className="shadow-xl rounded-xl"
+        >
+
+            {/* Search bar */}
             <Box
                 component="div"
                 className="flex rounded-xl"
-                sx={{ backgroundColor: colors.orangeAccent[800], ":hover": { backgroundColor: colors.orangeAccent[400] } }}
+                sx={{
+                    backgroundColor: colors.orangeAccent[800],
+                    ":hover": { backgroundColor: colors.orangeAccent[400] }
+                }}
             >
                 <InputBase sx={{ ml: 1, flex: 1 }} placeholder="Search..." />
                 <IconButton>
-                    <SearchIcon htmlColor={colors.yellowAccent[500]} className="rounded-full" />
+                    <SearchIcon htmlColor={colors.yellowAccent[400]} className="rounded-full" />
                 </IconButton>
             </Box>
 
+            {/* Other icons */}
             <Box display="flex" alignItems="center">
                 <Box component="div" className="flex rounded-full" sx={{ backgroundColor: colors.greyAccent[400] }}>
-                    <IconButton>
-                        <LightModeOutlinedIcon htmlColor={theme.palette.mode == 'light' ? colors.yellowAccent[500] : colors.yellowAccent[800]} />
+                    <IconButton onClick={() => handleToggle('light')}>
+                        <LightModeOutlinedIcon htmlColor={theme.palette.mode == 'light' ? colors.orangeAccent[800] : colors.greyAccent[600]} />
                     </IconButton>
-                    <IconButton>
-                        <DarkModeOutlinedIcon htmlColor={theme.palette.mode == 'dark' ? colors.yellowAccent[500] : colors.yellowAccent[800]} />
+                    <IconButton onClick={() => handleToggle('dark')}>
+                        <DarkModeOutlinedIcon htmlColor={theme.palette.mode == 'dark' ? colors.yellowAccent[400] : colors.yellowAccent[300]} />
                     </IconButton>
                 </Box>
 
                 <IconButton>
-                    <NotificationsOutlinedIcon htmlColor={colors.yellowAccent[500]} />
+                    <NotificationsOutlinedIcon htmlColor={theme.palette.mode == 'light' ? colors.orangeAccent[400] : colors.yellowAccent[300]} />
                 </IconButton>
                 <IconButton>
-                    <SettingsOutlinedIcon htmlColor={colors.yellowAccent[500]} />
+                    <SettingsOutlinedIcon htmlColor={theme.palette.mode == 'light' ? colors.orangeAccent[400] : colors.yellowAccent[300]} />
                 </IconButton>
                 <IconButton>
-                    <PersonOutlinedIcon htmlColor={colors.yellowAccent[500]} />
+                    <PersonOutlinedIcon htmlColor={theme.palette.mode == 'light' ? colors.orangeAccent[400] : colors.yellowAccent[300]} />
                 </IconButton>
             </Box>
         </Box>
