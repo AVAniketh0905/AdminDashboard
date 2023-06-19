@@ -11,21 +11,20 @@ import { useRouter } from 'next/navigation';
 import { CalendarIcon } from '@mui/x-date-pickers';
 import Link from 'next/link';
 
-const ListItemCompoent = ({ text, icon, sx }: { text: string; icon: React.JSX.Element; sx: any }) => {
+const ListItemCompoent = ({ text, icon, sx, setOpen }: { text: string; icon: React.JSX.Element; sx: any; setOpen: any }) => {
     return <IconButton className='flex text-center hover:cursor-default' sx={{ borderRadius: 0, borderTopRightRadius: 30, borderBottomRightRadius: 30 }}>
         <ListItem className='flex w-full' >
             <ListItemIcon sx={{ color: sx.color[400] }}>
                 {icon}
             </ListItemIcon>
             <ListItemText sx={{ color: sx.color[500] }}>
-                <Link className='hover:cursor-pointer' href={text != 'Dashboard' ? `/${text.toLowerCase()}` : '/'}>{text}</Link>
+                <Link onClick={() => setOpen(false)} className='hover:cursor-pointer' href={text != 'Dashboard' ? `/${text.toLowerCase()}` : '/'}>{text}</Link>
             </ListItemText>
         </ListItem>
     </IconButton>
 }
 
 export default function SideBar() {
-    const router = useRouter();
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
@@ -41,13 +40,13 @@ export default function SideBar() {
             icon: <AssignmentIcon />,
         },
         {
+            text: 'Calendar',
+            icon: <CalendarIcon />,
+        },
+        {
             text: 'Contact',
             icon: <CableIcon />,
         },
-        {
-            text: 'Calendar',
-            icon: <CalendarIcon />,
-        }
     ]
     const charts = [
         {
@@ -112,9 +111,9 @@ export default function SideBar() {
                             pages.map((object, index) => (
                                 theme.palette.mode == 'light'
                                     ?
-                                    <ListItemCompoent key={index} icon={object.icon} sx={{ color: colors.orangeAccent }} text={object.text} />
+                                    <ListItemCompoent key={index} icon={object.icon} setOpen={setOpen} sx={{ color: colors.orangeAccent }} text={object.text} />
                                     :
-                                    <ListItemCompoent key={index} icon={object.icon} sx={{ color: colors.yellowAccent }} text={object.text} />
+                                    <ListItemCompoent key={index} icon={object.icon} setOpen={setOpen} sx={{ color: colors.yellowAccent }} text={object.text} />
 
                             ))
                         }
@@ -129,9 +128,9 @@ export default function SideBar() {
                             charts.map((object, index) => (
                                 theme.palette.mode == 'light'
                                     ?
-                                    <ListItemCompoent key={index} icon={object.icon} sx={{ color: colors.orangeAccent }} text={object.text} />
+                                    <ListItemCompoent key={index} icon={object.icon} setOpen={setOpen} sx={{ color: colors.orangeAccent }} text={object.text} />
                                     : 
-                                    <ListItemCompoent key={index} icon={object.icon} sx={{ color: colors.yellowAccent }} text={object.text} />
+                                    <ListItemCompoent key={index} icon={object.icon} setOpen={setOpen} sx={{ color: colors.yellowAccent }} text={object.text} />
 
                             ))
                         }

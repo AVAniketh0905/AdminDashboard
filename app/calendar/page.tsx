@@ -1,11 +1,7 @@
 "use client"
 
 import HeadingComponent from '@/components/heading'
-import SideBar from '@/components/sidebar'
-import TopBar from '@/components/topbar'
-import { ColorModeContext, useMode } from '@/themes/theme'
-import { ThemeProvider } from '@emotion/react'
-import { CssBaseline } from '@mui/material'
+import { useMode } from '@/themes/theme'
 import React from 'react'
 
 export default function Calendar() {
