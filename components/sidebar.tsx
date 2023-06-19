@@ -100,9 +100,9 @@ export default function SideBar() {
                     background: theme.palette.mode == 'light' ? colors.whiteAccent[500] : colors.greyAccent[500],
                     borderRightColor: colors.yellowAccent[400],
                 }}>
-                    <Box component="div" sx={{ backgroundColor: theme.palette.mode == 'light' ? colors.whiteAccent[200] : colors.greyAccent[800] }} className="flex text-center mb-5 rounded-xl justify-between">
+                    <Box component="div" className="flex text-center mb-5 rounded-xl justify-between">
                         <ListItem className='flex flex-col w-full'>
-                            <ListItemText className='text-center' sx={{ color: colors.yellowAccent[500] }}>User</ListItemText>
+                            <ListItemText className='text-center' sx={{ color: theme.palette.mode == 'light' ? colors.orangeAccent[300] : colors.yellowAccent[700] }}>User</ListItemText>
                         </ListItem>
                     </Box>
 
