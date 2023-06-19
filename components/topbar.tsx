@@ -53,7 +53,7 @@ export default function TopBar() {
                         <LightModeOutlinedIcon htmlColor={theme.palette.mode == 'light' ? colors.orangeAccent[800] : colors.greyAccent[600]} />
                     </IconButton>
                     <IconButton onClick={() => handleToggle('dark')}>
-                        <DarkModeOutlinedIcon htmlColor={theme.palette.mode == 'dark' ? colors.yellowAccent[400] : colors.yellowAccent[300]} />
+                        <DarkModeOutlinedIcon htmlColor={theme.palette.mode == 'dark' ? colors.yellowAccent[400] : colors.yellowAccent[200]} />
                     </IconButton>
                 </Box>
 
