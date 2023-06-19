@@ -8,15 +8,11 @@ import { ThemeProvider } from "@emotion/react";
 import { CssBaseline } from "@mui/material";
 
 export default function Contact() {
-    const { theme, colorMode } = useMode();
+    const { theme } = useMode();
+
     return (
-        <ColorModeContext.Provider value={colorMode}>
-            <ThemeProvider theme={theme}>
-                <CssBaseline />
-                <TopBar />
-                <SideBar />
-                <HeadingComponent heading="Contact" subheading="Connect with me for more!" />
-            </ThemeProvider>
-        </ColorModeContext.Provider>
+        <main>
+            <HeadingComponent heading="Contact" subheading="Connect with me for more!" />
+        </main>         
     )
 }

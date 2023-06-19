@@ -9,16 +9,11 @@ import { CssBaseline } from '@mui/material';
 
 
 export default function Home() {
-  const { theme, colorMode } = useMode();
+  const { theme } = useMode();
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <TopBar />
-        <SideBar />
-        <HeadingComponent heading='DashBoard' subheading='Welcome Back!' />
-      </ThemeProvider>
-    </ColorModeContext.Provider>
+    <main>
+      <HeadingComponent heading='DashBoard' subheading='Welcome Back!' />
+    </main>
   )
 }

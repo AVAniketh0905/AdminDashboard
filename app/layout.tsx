@@ -1,5 +1,12 @@
+"use client"
+
+import { useMode, ColorModeContext } from '@/themes/theme'
+import { ThemeProvider } from '@emotion/react'
+import { CssBaseline } from '@mui/material'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import SideBar from '@/components/sidebar'
+import TopBar from '@/components/topbar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,10 +20,19 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const { theme, colorMode } = useMode();
+
   return (
     <html lang="en">
-      <body className={inter.className}>
-        {children}
+      <body className={`m-5 ${inter.className}`}>
+        <ColorModeContext.Provider value={colorMode}>
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <SideBar />
+            <TopBar />
+            {children}
+          </ThemeProvider>
+        </ColorModeContext.Provider>
       </body>
     </html>
   )

@@ -9,16 +9,11 @@ import { CssBaseline } from '@mui/material'
 import React from 'react'
 
 export default function Calendar() {
-    const { theme, colorMode } = useMode()
+    const { theme } = useMode();
 
     return (
-        <ColorModeContext.Provider value={colorMode}>
-            <ThemeProvider theme={theme}>
-                <CssBaseline />
-                <TopBar />
-                <SideBar />
-                <HeadingComponent heading='Calendar' subheading='Keep track of important dates...' />
-            </ThemeProvider>
-        </ColorModeContext.Provider>
+        <main>
+            <HeadingComponent heading='Calendar' subheading='Keep track of important dates...' />
+        </main>
     )
 }

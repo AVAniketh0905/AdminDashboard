@@ -9,14 +9,17 @@ import PieChartIcon from '@mui/icons-material/PieChart';
 import CableIcon from '@mui/icons-material/Cable';
 import { useRouter } from 'next/navigation';
 import { CalendarIcon } from '@mui/x-date-pickers';
+import Link from 'next/link';
 
 const ListItemCompoent = ({ text, icon, sx }: { text: string; icon: React.JSX.Element; sx: any }) => {
-    return <IconButton className='flex text-center' sx={{ borderRadius: 0, borderTopRightRadius: 30, borderBottomRightRadius: 30 }}>
+    return <IconButton className='flex text-center hover:cursor-default' sx={{ borderRadius: 0, borderTopRightRadius: 30, borderBottomRightRadius: 30 }}>
         <ListItem className='flex w-full' >
             <ListItemIcon sx={{ color: sx.color[400] }}>
                 {icon}
             </ListItemIcon>
-            <ListItemText sx={{ color: sx.color[500] }}>{text}</ListItemText>
+            <ListItemText sx={{ color: sx.color[500] }}>
+                <Link className='hover:cursor-pointer' href={text != 'Dashboard' ? `/${text.toLowerCase()}` : '/'}>{text}</Link>
+            </ListItemText>
         </ListItem>
     </IconButton>
 }
@@ -61,12 +64,6 @@ export default function SideBar() {
         }
     ]
 
-    const handleRouting = (e: any) => {
-        const text = e.target.textContent;
-
-        router.push(text != 'Dashboard' ? `/${text.toLowerCase()}` : '/');
-    }
-
 
     useEffect(() => {
         const handleMouseMove = (event: MouseEvent) => {
@@ -110,7 +107,7 @@ export default function SideBar() {
                         <Typography sx={{ color: theme.palette.mode == 'light' ? colors.orangeAccent[300] : colors.yellowAccent[700] }}>Pages</Typography>
                     </Box>
 
-                    <Box component="div" className='flex flex-col border-l-2 justify-start' onClick={handleRouting} sx={{ borderLeftColor: theme.palette.mode == 'light' ? colors.whiteAccent[400] : colors.greyAccent[600] }}>
+                    <Box component="div" className='flex flex-col border-l-2 justify-start' sx={{ borderLeftColor: theme.palette.mode == 'light' ? colors.whiteAccent[400] : colors.greyAccent[600] }}>
                         {
                             pages.map((object, index) => (
                                 theme.palette.mode == 'light'
@@ -127,7 +124,7 @@ export default function SideBar() {
                         <Typography sx={{ color: theme.palette.mode == 'light' ? colors.orangeAccent[300] : colors.yellowAccent[700] }}>Charts</Typography>
                     </Box>
 
-                    <Box component="div" className='flex flex-col border-l-2 justify-start' onClick={handleRouting} sx={{ borderLeftColor: theme.palette.mode == 'light' ? colors.whiteAccent[400] : colors.greyAccent[600] }}>
+                    <Box component="div" className='flex flex-col border-l-2 justify-start' sx={{ borderLeftColor: theme.palette.mode == 'light' ? colors.whiteAccent[400] : colors.greyAccent[600] }}>
                         {
                             charts.map((object, index) => (
                                 theme.palette.mode == 'light'
