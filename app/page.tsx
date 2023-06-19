@@ -1,6 +1,6 @@
 "use client"
 
-import DashboardComponent from '@/components/dashboard';
+import HeadingComponent from '@/components/heading';
 import SideBar from '@/components/sidebar';
 import TopBar from '@/components/topbar';
 import { useMode, ColorModeContext } from '@/themes/theme';
@@ -17,9 +17,7 @@ export default function Home() {
         <CssBaseline />
         <TopBar />
         <SideBar />
-        <main>
-          <DashboardComponent />
-        </main>
+        <HeadingComponent heading='DashBoard' subheading='Welcome Back!' />
       </ThemeProvider>
     </ColorModeContext.Provider>
   )

@@ -18,6 +18,7 @@ export default function TopBar() {
     const handleToggle = (modePressed: string) => {
         if (modePressed != theme.palette.mode) {
             colorMode.toggleColorMode();
+            localStorage.setItem('mode', modePressed);
         }
     }
 
