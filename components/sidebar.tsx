@@ -29,7 +29,7 @@ export default function SideBar() {
     const colors = tokens(theme.palette.mode);
 
     const [open, setOpen] = useState(false);
-    const [threshold, setThreshold] = useState(30);
+    const [threshold, setThreshold] = useState(20);
     const pages = [
         {
             text: 'Dashboard',
@@ -94,7 +94,7 @@ export default function SideBar() {
             >
                 <List className='flex flex-col p-5 border-r-4 h-screen' sx={{
                     background: theme.palette.mode == 'light' ? colors.whiteAccent[500] : colors.greyAccent[500],
-                    borderRightColor: colors.yellowAccent[400],
+                    borderRightColor: theme.palette.mode == 'light' ? colors.orangeAccent[600] : colors.yellowAccent[400],
                 }}>
                     <Box component="div" className="flex text-center mb-5 rounded-xl justify-between">
                         <ListItem className='flex flex-col w-full'>
