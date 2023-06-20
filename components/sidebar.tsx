@@ -7,7 +7,6 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import SsidChartIcon from '@mui/icons-material/SsidChart';
 import PieChartIcon from '@mui/icons-material/PieChart';
 import CableIcon from '@mui/icons-material/Cable';
-import { useRouter } from 'next/navigation';
 import { CalendarIcon } from '@mui/x-date-pickers';
 import Link from 'next/link';
 
@@ -18,7 +17,7 @@ const ListItemCompoent = ({ text, icon, sx, setOpen }: { text: string; icon: Rea
                 {icon}
             </ListItemIcon>
             <ListItemText sx={{ color: sx.color[500] }}>
-                <Link onClick={() => setOpen(false)} className='hover:cursor-pointer' href={text != 'Dashboard' ? `/${text.toLowerCase()}` : '/'}>{text}</Link>
+                <Link onClick={() => setOpen(false)} className='hover:cursor-pointer' href={text != 'Dashboard' ? `/${text.toLowerCase().split(' ').join('')}` : '/'}>{text}</Link>
             </ListItemText>
         </ListItem>
     </IconButton>

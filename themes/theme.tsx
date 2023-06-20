@@ -207,7 +207,9 @@ export const ColorModeContext = createContext({
 })
 
 export const useMode = () => {
-    const [mode, setMode] = useState(localStorage.getItem('mode') || 'dark');
+    const prevMode = localStorage?.getItem('mode');
+
+    const [mode, setMode] = useState(prevMode || 'dark');
 
     const colorMode = useMemo(
         () => ({
