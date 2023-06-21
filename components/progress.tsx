@@ -11,7 +11,7 @@ export default function ProgressBar({ progress = "0.75", size = 60 }) {
 
     return (
         <Box sx={{
-            background: `radial-gradient(${colors.yellowAccent[500]} 55%, transparent 56%), conic-gradient(${colors.yellowAccent[500]} 0deg ${angle}deg, ${colors.orangeAccent[300]} ${angle}deg 360deg) 
+            background: `radial-gradient(${isLightMode ? colors.greyAccent[800] : colors.greyAccent[500]} 55%, transparent 56%), conic-gradient(${colors.yellowAccent[500]} 0deg ${angle}deg, ${colors.orangeAccent[300]} ${angle}deg 360deg) 
             ${colors.whiteAccent[600]}`,
             borderRadius: "50%",
             width: `${size}px`,
