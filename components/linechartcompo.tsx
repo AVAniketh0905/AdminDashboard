@@ -289,7 +289,7 @@ export default function LineChartComponenet() {
             <ResponsiveLine
                 data={data}
                 theme={{
-                    textColor: isLightMode ? colors.blackAccent[100] : colors.whiteAccent[800],
+                    textColor: isLightMode ? colors.blackAccent[100] : colors.whiteAccent[100],
                     legends: {
                         text: {
                             fill: isLightMode ? colors.blackAccent[100] : colors.whiteAccent[300],

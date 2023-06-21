@@ -47,9 +47,20 @@ export default function Home() {
               increase="100%"
             />
           </Grid>
-          <Grid item xs={8}>
-            {/* todo */}
-            <LineChartComponenet />
+          <Grid item xs={12}>
+            <Box className="w-full rounded-xl border-4 border-white">
+              <LineChartComponenet />
+            </Box>
+          </Grid>
+          <Grid item xs={6}>
+            <Box className="rounded-xl border-4 border-white">
+              <PieChartComponenet />
+            </Box>
+          </Grid>
+          <Grid item xs={6}>
+            <Box className="rounded-xl border-4 border-white">
+              <BarChartComponenet />
+            </Box>
           </Grid>
         </Grid>
       </Box>

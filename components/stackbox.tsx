@@ -16,12 +16,12 @@ export default function StackBox({ title, icon, subtitle, progress, increase }: 
     const isLightMode = Boolean(theme.palette.mode == 'light')
 
     return (
-        <Box className="w-3/4 p-5 rounded-xl" sx={{
+        <Box className="flex p-5 justify-center rounded-xl" sx={{
             background: isLightMode ? colors.whiteAccent[400] : colors.greyAccent[500],
         }}>
-            <Box className="flex justify-between">
-                <Box display="flex flex-col">
-                    <Box display="flex justify-between">
+            <Box component="div" className="flex w-full justify-between">
+                <Box className="flex flex-col">
+                    <Box className="flex">
                         {icon}
                         <Typography variant="h4" sx={{
                             color: isLightMode ? colors.orangeAccent[400] : colors.yellowAccent[400],

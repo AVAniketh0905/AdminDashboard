@@ -2,7 +2,9 @@
 
 import HeadingComponent from "@/components/heading";
 import { tokens } from "@/themes/theme";
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Link, Typography, useTheme } from "@mui/material";
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import Image from "next/image";
 
 const returnImg = () => {
@@ -14,35 +16,47 @@ const returnImg = () => {
 export default function About() {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode)
+    const isLightMode = theme.palette.mode == 'light';
 
     return (
         <main>
             <HeadingComponent heading="About" subheading="A little about me..." />
-            <Box display="flex" justifyContent="center" alignItems="center">
-                <div className="text-gray-600 body-font">
-                    <div className="container mx-auto flex flex-col px-5 py-24 justify-center items-center">
-                        <Image className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded" alt="hero" src={returnImg()} width={50} height={50} />
-                        <div className="w-full md:w-2/3 flex flex-col mb-16 items-center text-center">
-                            <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Knausgaard typewriter readymade marfa</h1>
-                            <p className="mb-8 leading-relaxed">Kickstarter biodiesel roof party wayfarers cold-pressed. Palo santo live-edge tumeric scenester copper mug flexitarian. Prism vice offal plaid everyday carry. Gluten-free chia VHS squid listicle artisan.</p>
-                            <p className="text-sm mt-2 text-gray-500 mb-8 w-full">Neutra shabby chic ramps, viral fixie.</p>
-                            <div className="flex">
-                                <button className="bg-gray-100 inline-flex py-3 px-5 rounded-lg items-center hover:bg-gray-200 focus:outline-none">
-                                    <span className="ml-4 flex items-start flex-col leading-none">
-                                        <span className="text-xs text-gray-600 mb-1">GET IT ON</span>
-                                        <span className="title-font font-medium">Google Play</span>
-                                    </span>
-                                </button>
-                                <button className="bg-gray-100 inline-flex py-3 px-5 rounded-lg items-center ml-4 hover:bg-gray-200 focus:outline-none">
-                                    <span className="ml-4 flex items-start flex-col leading-none">
-                                        <span className="text-xs text-gray-600 mb-1">Download on the</span>
-                                        <span className="title-font font-medium">App Store</span>
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <Box className="flex justify-center">
+                <Box className="flex rounded-xl justify-center align-middle w-1/2" sx={{
+                    backgroundColor: isLightMode ? colors.whiteAccent[400] : colors.greyAccent[600],
+                }}>
+                    <Box className="body-font" sx={{
+                        backgroundColor: isLightMode ? colors.whiteAccent[300] : colors.greyAccent[500],
+                    }}>
+                        <Box className="container mx-auto flex flex-col pt-2 justify-center items-center">
+                            <Image className="lg:w-2/6 md:w-3/6 w-5/6 object-cover object-center rounded" alt="hero" src={returnImg()} width={50} height={50} />
+                            <Box className="w-full md:w-2/3 p-5 flex flex-col mb-16 items-center text-center">
+                                <Typography variant="h4" component="h2">
+                                    <Box className="flex flex-col justify-between gap-2 p-3 text-center">
+                                        <Typography variant="h4" component="span">Hi, I am dekomori_sanae09</Typography>
+                                        <Typography variant="h4" component="span" sx={{
+                                            color: isLightMode ? colors.blackAccent[600] : colors.greyAccent[300],
+                                        }} >Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque ex libero necessitatibus nostrum natus temporibus eius quaerat ea, soluta repudiandae explicabo cum dolor harum cupiditate fuga ut quibusdam ipsum dolorem.</Typography>
+                                    </Box>
+                                    <Box className="flex gap-5 justify-center">
+                                        <Link href="#" className="inline-flex py-3 px-5 rounded-lg items-center focus:outline-none cursor-pointer">
+                                            <GitHubIcon sx={{
+                                                fontSize: 40,
+                                                color: isLightMode ? colors.orangeAccent[300] : colors.yellowAccent[400],
+                                            }} />
+                                        </Link>
+                                        <Link href="#" className="inline-flex py-3 px-5 rounded-lg items-center ml-4 focus:outline-none cursor-pointer">
+                                            <LinkedInIcon sx={{
+                                                fontSize: 40,
+                                                color: isLightMode ? colors.orangeAccent[300] : colors.yellowAccent[400],
+                                            }} />
+                                        </Link>
+                                    </Box>
+                                </Typography>
+                            </Box>
+                        </Box>
+                    </Box>
+                </Box>
             </Box>
         </main>
     )
